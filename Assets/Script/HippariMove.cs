@@ -4,27 +4,50 @@ using UnityEngine;
 
 public class HippariMove : MonoBehaviour
 {
-    private Rigidbody2D _rb;
-    private float power = 2.0f;
-    private float maxPower = 5.0f;
-    private Vector2 StartPos;
-    private Vector2 EndPos;
+    Rigidbody2D _rb;
+    LineRenderer _lr;
+    [SerializeField] float _power = 2.0f;
+    [SerializeField] float _maxPower = 5.0f;
+    Vector2 _startPos;
+    Vector2 _endPos;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _lr = GetComponent<LineRenderer>();
     }
-    private void OnMouseDown()
+    void OnMouseDown()
     {
-        StartPos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
     }
-    private void OnMouseDrag()
+    void OnMouseDrag()
     {
-        transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
     }
-    private void OnMouseUp()
+    void OnMouseUp()
     {
-        EndPos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 force = Vector2.ClampMagnitude((StartPos - EndPos), maxPower);
-        _rb.AddForce(force * power, ForceMode2D.Impulse);
+
     }
+    private void Update()
+    {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            _lr.enabled = true;
+            _startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            _lr.SetPosition(0, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 10)));
+        }
+        if (Input.GetMouseButton(0))
+        {
+            _lr.SetPosition(1, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 10)));
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            _lr.enabled = false;
+            _endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 force = Vector2.ClampMagnitude((_startPos - _endPos), _maxPower);
+            _rb.AddForce(force * _power, ForceMode2D.Impulse);
+        }
+    }
+
 }
