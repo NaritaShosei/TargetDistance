@@ -6,8 +6,8 @@ public class DistanceManager : MonoBehaviour
 {
     float _dis;
     static float _distance;
-    [SerializeField] GameObject _playerObject;
-    [SerializeField] GameObject _targetObject;
+    Transform _playerObject;
+    Transform _targetObject;
     Text _text;
     [SerializeField] GameMode _gameMode;
     enum GameMode
@@ -37,12 +37,14 @@ public class DistanceManager : MonoBehaviour
     }
     void InGame()
     {
+        _playerObject = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        _targetObject = GameObject.FindGameObjectWithTag("Target").GetComponent<Transform>();
         _dis = Vector2.Distance(_playerObject.transform.position, _targetObject.transform.position);
-        _distance  = _dis;
-        _text.text = $"ターゲットまでの距離\n残り{_distance.ToString("F0")}m";
+        _distance = _dis;
+        _text.text = $"ターゲットまでの距離\n残り{_distance.ToString("F1")}m";
     }
     void Result()
     {
-        
+
     }
 }
