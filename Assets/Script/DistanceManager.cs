@@ -10,6 +10,8 @@ public class DistanceManager : MonoBehaviour
     Transform _targetObject;
     Text _text;
     [SerializeField] GameMode _gameMode;
+    int _score;
+    static int _staticScore;
     enum GameMode
     {
         ingame, result
@@ -19,19 +21,18 @@ public class DistanceManager : MonoBehaviour
     void Start()
     {
         _text = GameObject.Find("DistanceText").GetComponent<Text>();
+        if (_gameMode == GameMode.result)
+        {
+            Result();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (_gameMode)
-        {
-            case GameMode.ingame:
-                Invoke("InGame",0.001f);
-                break;
-            case GameMode.result:
-                Result();
-                break;
+        if (_gameMode == GameMode.ingame)
+        { 
+                Invoke("InGame", 0.001f);//一瞬nullが出るから少し遅らせて呼び出す
         }
     }
     void InGame()
@@ -44,6 +45,19 @@ public class DistanceManager : MonoBehaviour
     }
     void Result()
     {
-
+        if (_distance <= 0.247f && _distance >= 0)
+        {
+            _score += 500;
+        }
+        else if (_distance <= 2.519f)
+        {
+            _score += 100;
+        }
+        else
+        {
+            _score += 0;
+        }
+        _staticScore += _score;
+        _text.text = $"スコア\n{_staticScore}";
     }
 }

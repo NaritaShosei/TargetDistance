@@ -14,11 +14,14 @@ public class WallManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ContactPoint2D contactPoint = collision.GetContact(0);
-        _player.velocity = Vector3.Reflect(collision.relativeVelocity,contactPoint.normal);
+        _player.velocity = Vector3.Reflect(collision.relativeVelocity, contactPoint.normal);
+
+       //_player.transform.forward = _player.transform.forward * -1;
+
     }
 }

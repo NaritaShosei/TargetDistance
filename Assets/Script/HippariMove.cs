@@ -47,13 +47,12 @@ public class HippariMove : MonoBehaviour
                 _stop = false;
             }
         }
-        if (_rb.IsSleeping() && !_stop)
+        if (_rb.IsSleeping() && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
         {
             if (_countStart)
             {
-                _zeroCount = _count;
                 _zeroCount += 1;
-                _count = _zeroCount;
+                _count += _zeroCount;
                 _countStart = false;
                 if (!_countStart)
                 {
