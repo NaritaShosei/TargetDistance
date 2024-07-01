@@ -11,23 +11,14 @@ public class HippariMove : MonoBehaviour
     Vector2 _startPos;
     Vector2 _endPos;
     bool _stop = true;
+    bool _countStart = true;
+    int _zeroCount = 0;
+    public static int _count = 0;
+    [SerializeField] string _sceneName;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _lr = GetComponent<LineRenderer>();
-    }
-    void OnMouseDown()
-    {
-
-    }
-    void OnMouseDrag()
-    {
-        //transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-    }
-    void OnMouseUp()
-    {
-
     }
     private void Update()
     {
@@ -55,6 +46,24 @@ public class HippariMove : MonoBehaviour
                 _rb.AddForce(force * _power, ForceMode2D.Impulse);
                 _stop = false;
             }
+        }
+        if (_rb.IsSleeping() && !_stop)
+        {
+            if (_countStart)
+            {
+                _zeroCount = _count;
+                _zeroCount += 1;
+                _count = _zeroCount;
+                _countStart = false;
+                if (!_countStart)
+                {
+                    SceneChangeManager.SceneChange(_sceneName);
+                }
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log(_count);
         }
     }
 

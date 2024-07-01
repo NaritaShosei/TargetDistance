@@ -768,7 +768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224328642a5079149a3437b757944cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerObject: {fileID: 1005884277}
   _gameMode: 0
 --- !u!4 &578813928
 Transform:
@@ -1682,6 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _power: 3.5
   _maxPower: 7
+  _sceneName: Result
 --- !u!212 &1005884281
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1802,7 +1802,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.28571323
+        value: 0.1285706
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1810,8 +1810,8 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.9301973
-        value: 0
+        time: 0.92717606
+        value: 0.3571396
         inSlope: 0
         outSlope: 0
         tangentMode: 0

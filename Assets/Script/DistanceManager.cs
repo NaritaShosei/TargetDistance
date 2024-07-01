@@ -27,12 +27,11 @@ public class DistanceManager : MonoBehaviour
         switch (_gameMode)
         {
             case GameMode.ingame:
-                InGame();
+                Invoke("InGame",0.001f);
                 break;
             case GameMode.result:
                 Result();
                 break;
-
         }
     }
     void InGame()
