@@ -9,7 +9,7 @@ public class ArrowRoa : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("GetRoa", 0.001f);
+        Invoke("GetRoa", 0.1f);
     }
 
     // Update is called once per frame
