@@ -45,7 +45,7 @@ public class DistanceManager : MonoBehaviour
     }
     void Result()
     {
-        if (_distance <= 0.247f && _distance >= 0)
+        if (_distance <= 0.65f && _distance >= 0)
         {
             _score += 500;
         }
