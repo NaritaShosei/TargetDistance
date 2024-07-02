@@ -14,16 +14,23 @@ public class DistanceManager : MonoBehaviour
     static int _staticScore;
     enum GameMode
     {
-        ingame, result
+        ingame, result, end
     }
 
     // Start is called before the first frame update
     void Start()
     {
         _text = GameObject.Find("DistanceText").GetComponent<Text>();
-        if (_gameMode == GameMode.result)
+        switch (_gameMode)
         {
-            Result();
+            case GameMode.result:
+                Result();
+                break;
+            case GameMode.end:
+                End();
+                break;
+            case GameMode.ingame:
+                break;
         }
     }
 
@@ -31,8 +38,8 @@ public class DistanceManager : MonoBehaviour
     void Update()
     {
         if (_gameMode == GameMode.ingame)
-        { 
-                Invoke("InGame", 0.001f);//一瞬nullが出るから少し遅らせて呼び出す
+        {
+            InGame();
         }
     }
     void InGame()
@@ -45,19 +52,27 @@ public class DistanceManager : MonoBehaviour
     }
     void Result()
     {
-        if (_distance <= 0.65f && _distance >= 0)
+        if (HippariMove._count != 0)
         {
-            _score += 500;
-        }
-        else if (_distance <= 2.519f)
-        {
-            _score += 100;
-        }
-        else
-        {
-            _score += 0;
+            if (_distance <= 0.65f && _distance >= 0)
+            {
+                _score += 500;
+            }
+            else if (_distance <= 2.519f)
+            {
+                _score += 100;
+            }
+            else
+            {
+                _score += 0;
+            }
         }
         _staticScore += _score;
         _text.text = $"スコア\n{_staticScore}";
+
+    }
+    void End()
+    {
+        HippariMove._count = 0;
     }
 }

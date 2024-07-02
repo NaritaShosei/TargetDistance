@@ -15,6 +15,7 @@ public class HippariMove : MonoBehaviour
     int _zeroCount = 0;
     public static int _count = 0;
     [SerializeField] string _sceneName;
+    [SerializeField] string _sceneNameEnd;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -47,16 +48,20 @@ public class HippariMove : MonoBehaviour
                 _stop = false;
             }
         }
-        if (_rb.IsSleeping() && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
+        if (_rb.velocity.magnitude <= 0.3 && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
         {
             if (_countStart)
             {
                 _zeroCount += 1;
                 _count += _zeroCount;
                 _countStart = false;
-                if (!_countStart)
+                if (!_countStart && _count <= 10)
                 {
                     SceneChangeManager.SceneChange(_sceneName);
+                }
+                if (!_countStart && _count > 10)
+                {
+                    SceneChangeManager.SceneChange(_sceneNameEnd);
                 }
             }
         }
