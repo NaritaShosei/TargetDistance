@@ -48,7 +48,7 @@ public class DistanceManager : MonoBehaviour
         _targetObject = GameObject.FindGameObjectWithTag("Target").GetComponent<Transform>();
         _dis = Vector2.Distance(_playerObject.transform.position, _targetObject.transform.position);
         _distance = _dis;
-        _text.text = $"ターゲットまでの距離\n残り{_distance.ToString("F1")}m";
+        _text.text = $"TARGETまでの距離\n残り{_distance.ToString("F1")}m";
     }
     void Result()
     {
@@ -56,23 +56,24 @@ public class DistanceManager : MonoBehaviour
         {
             if (_distance <= 0.65f && _distance >= 0)
             {
-                _score += 500;
+                _score = 500;
             }
             else if (_distance <= 2.519f)
             {
-                _score += 100;
+                _score = 100;
             }
             else
             {
-                _score += 0;
+                _score = 0;
             }
         }
         _staticScore += _score;
-        _text.text = $"スコア\n{_staticScore}";
+        _text.text = $"スコア\n{_score}点";
 
     }
     void End()
     {
         HippariMove._count = 0;
+        _text.text = $"トータルスコア\n{_staticScore}点";
     }
 }

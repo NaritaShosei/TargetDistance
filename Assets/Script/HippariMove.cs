@@ -48,7 +48,7 @@ public class HippariMove : MonoBehaviour
                 _stop = false;
             }
         }
-        if (_rb.velocity.magnitude <= 0.3 && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
+        if (_rb.velocity.magnitude <= 0.03 && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
         {
             if (_countStart)
             {
