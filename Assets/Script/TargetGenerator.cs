@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetGeneretar : MonoBehaviour
+public class TargetGenerator : MonoBehaviour
 {
     [SerializeField] GameObject _targetPrefab;
     [SerializeField] GameObject _jamamonoObject;

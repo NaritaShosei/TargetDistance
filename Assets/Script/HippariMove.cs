@@ -11,7 +11,7 @@ public class HippariMove : MonoBehaviour
     Vector2 _startPos;
     Vector2 _endPos;
     bool _stop = true;
-    bool _countStart = true;
+    bool _stageCount = true;
     int _zeroCount = 0;
     public static int _count = 0;
     [SerializeField] string _sceneName;
@@ -50,16 +50,16 @@ public class HippariMove : MonoBehaviour
         }
         if (_rb.velocity.magnitude <= 0.03 && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
         {
-            if (_countStart)
+            if (_stageCount)
             {
                 _zeroCount += 1;
                 _count += _zeroCount;
-                _countStart = false;
-                if (!_countStart && _count <= 10)
+                _stageCount = false;
+                if (!_stageCount && _count <= 10)
                 {
                     SceneChangeManager.SceneChange(_sceneName);
                 }
-                if (!_countStart && _count > 10)
+                if (!_stageCount && _count > 10)
                 {
                     SceneChangeManager.SceneChange(_sceneNameEnd);
                 }
