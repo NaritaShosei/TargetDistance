@@ -11,11 +11,12 @@ public class HippariMove : MonoBehaviour
     Vector2 _startPos;
     Vector2 _endPos;
     bool _stop = true;
-    bool _stageCount = true;
+    bool _start = true;
     int _zeroCount = 0;
-    public static int _count = 0;
+    public static int _stageCount = 0;
     [SerializeField] string _sceneName;
     [SerializeField] string _sceneNameEnd;
+    [SerializeField] int _gameEndCount;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -50,16 +51,16 @@ public class HippariMove : MonoBehaviour
         }
         if (_rb.velocity.magnitude <= 0.03 && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
         {
-            if (_stageCount)
+            if (_start)
             {
                 _zeroCount += 1;
-                _count += _zeroCount;
-                _stageCount = false;
-                if (!_stageCount && _count <= 10)
+                _stageCount += _zeroCount;
+                _start = false;
+                if (!_start && _stageCount <= _gameEndCount)
                 {
                     SceneChangeManager.SceneChange(_sceneName);
                 }
-                if (!_stageCount && _count > 10)
+                if (!_start && _stageCount > _gameEndCount)
                 {
                     SceneChangeManager.SceneChange(_sceneNameEnd);
                 }
@@ -67,7 +68,7 @@ public class HippariMove : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log(_count);
+            Debug.Log(_stageCount);
         }
     }
 

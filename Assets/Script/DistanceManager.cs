@@ -52,7 +52,7 @@ public class DistanceManager : MonoBehaviour
     }
     void Result()
     {
-        if (HippariMove._count != 0)
+        if (HippariMove._stageCount != 0)
         {
             if (_distance <= 0.65f && _distance >= 0)
             {
@@ -73,7 +73,7 @@ public class DistanceManager : MonoBehaviour
     }
     void End()
     {
-        HippariMove._count = 0;
+        HippariMove._stageCount = 0;
         _text.text = $"トータルスコア\n{_staticScore}点";
     }
 }

@@ -2727,9 +2727,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPrefab: {fileID: 4295986155184949047, guid: 77413be6bf8716d47a6273fc07d56882, type: 3}
   _jamamonoObject: {fileID: 8634312299456172852, guid: 7ccedbd304476ce499fa1a30a4df3d5b, type: 3}
-  _maxPosX: 2.7
+  _spawnPosX: 2.7
   _maxPosY: 29.83
   _minPosY: 10
+  _checkPoint: 1
+  _checkPoint2: 2
 --- !u!4 &1161712728
 Transform:
   m_ObjectHideFlags: 0
@@ -5393,6 +5395,10 @@ PrefabInstance:
     - target: {fileID: 4993422673886711059, guid: 747cc6b9808a3de4e919c836b36f0d0b, type: 3}
       propertyPath: m_Constraints
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713310063386476997, guid: 747cc6b9808a3de4e919c836b36f0d0b, type: 3}
+      propertyPath: _gameEndCount
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5713310063386476997, guid: 747cc6b9808a3de4e919c836b36f0d0b, type: 3}
       propertyPath: _sceneNameEnd
