@@ -17,12 +17,22 @@ public class TargetGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Spawn();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    void Spawn()
+    {
         _targetPos.x = Random.Range(-_spawnPosX, _spawnPosX);
         _targetPos.y = Random.Range(_minPosY, _maxPosY);
         _jamamonoPos.x = Random.Range(-_spawnPosX / 2, _spawnPosX / 2);
         _jamamonoPos.y = _targetPos.y - Random.Range(2, 4);
         _jamamonoPos2.x = Random.Range(-_spawnPosX, _spawnPosX);
-        _jamamonoPos2.y = _targetPos.y - Random.Range(4,5);
+        _jamamonoPos2.y = _targetPos.y - Random.Range(4, 5);
         Instantiate(_targetPrefab, _targetPos, Quaternion.identity);
         if (HippariMove._stageCount > _checkPoint)
         {
@@ -33,11 +43,5 @@ public class TargetGenerator : MonoBehaviour
                 Debug.LogWarning(HippariMove._stageCount);
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

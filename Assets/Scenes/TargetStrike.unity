@@ -2730,8 +2730,8 @@ MonoBehaviour:
   _spawnPosX: 2.7
   _maxPosY: 29.83
   _minPosY: 10
-  _checkPoint: 1
-  _checkPoint2: 2
+  _checkPoint: 2
+  _checkPoint2: 4
 --- !u!4 &1161712728
 Transform:
   m_ObjectHideFlags: 0
@@ -5398,7 +5398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713310063386476997, guid: 747cc6b9808a3de4e919c836b36f0d0b, type: 3}
       propertyPath: _gameEndCount
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5713310063386476997, guid: 747cc6b9808a3de4e919c836b36f0d0b, type: 3}
       propertyPath: _sceneNameEnd
