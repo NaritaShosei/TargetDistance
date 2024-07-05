@@ -30,6 +30,7 @@ public class DistanceManager : MonoBehaviour
                 End();
                 break;
             case GameMode.ingame:
+                Invoke("Find", 0.01f);
                 break;
         }
     }
@@ -39,16 +40,14 @@ public class DistanceManager : MonoBehaviour
     {
         if (_gameMode == GameMode.ingame)
         {
-            InGame();
+            Invoke("InGame", 0.02f);
         }
     }
     void InGame()
     {
-        _playerObject = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        _targetObject = GameObject.FindGameObjectWithTag("Target").GetComponent<Transform>();
         _dis = Vector2.Distance(_playerObject.transform.position, _targetObject.transform.position);
         _distance = _dis;
-        _text.text = $"TARGETまでの距離\n残り{_distance.ToString("F1")}m";
+        _text.text = $"ターゲットまでの距離\n残り{_distance.ToString("F1")}m";
     }
     void Result()
     {
@@ -75,5 +74,10 @@ public class DistanceManager : MonoBehaviour
     {
         HippariMove._stageCount = 0;
         _text.text = $"トータルスコア\n{_staticScore}点";
+    }
+    void Find()
+    {
+        _playerObject = GameObject.FindGameObjectWithTag("Player").transform;
+        _targetObject = GameObject.FindGameObjectWithTag("Target").transform;
     }
 }

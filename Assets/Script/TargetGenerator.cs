@@ -34,7 +34,7 @@ public class TargetGenerator : MonoBehaviour
         _jamamonoPos2.x = Random.Range(-_spawnPosX, _spawnPosX);
         _jamamonoPos2.y = _targetPos.y - Random.Range(4, 5);
         Instantiate(_targetPrefab, _targetPos, Quaternion.identity);
-        if (HippariMove._stageCount > _checkPoint)
+        if (HippariMove._stageCount >= _checkPoint)
         {
             Instantiate(_jamamonoObject, _jamamonoPos, Quaternion.identity);
             if (HippariMove._stageCount >= _checkPoint2)
