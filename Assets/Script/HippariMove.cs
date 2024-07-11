@@ -17,12 +17,12 @@ public class HippariMove : MonoBehaviour
     [SerializeField] string _sceneName;
     [SerializeField] string _sceneNameEnd;
     [SerializeField] int _gameEndCount;
-    AudioSource _audio;
+    [SerializeField] AudioSource _audio;
+    [SerializeField] GameObject _SeObject;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _lr = GetComponent<LineRenderer>();
-        _audio = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -51,6 +51,7 @@ public class HippariMove : MonoBehaviour
                 _rb.AddForce(force * _power, ForceMode2D.Impulse);
                 _stop = false;
                 _audio.Stop();
+                Instantiate(_SeObject);
             }
         }
         if (_rb.velocity.magnitude <= 0.03 && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
