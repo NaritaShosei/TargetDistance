@@ -17,10 +17,12 @@ public class HippariMove : MonoBehaviour
     [SerializeField] string _sceneName;
     [SerializeField] string _sceneNameEnd;
     [SerializeField] int _gameEndCount;
+    AudioSource _audio;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _lr = GetComponent<LineRenderer>();
+        _audio = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -32,6 +34,7 @@ public class HippariMove : MonoBehaviour
                 _lr.enabled = true;
                 _startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 _lr.SetPosition(0, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 10)));
+                _audio.Play();
             }
         }
         if (Input.GetMouseButton(0))
@@ -47,6 +50,7 @@ public class HippariMove : MonoBehaviour
                 Vector2 force = Vector2.ClampMagnitude((_startPos - _endPos), _maxPower);
                 _rb.AddForce(force * _power, ForceMode2D.Impulse);
                 _stop = false;
+                _audio.Stop();
             }
         }
         if (_rb.velocity.magnitude <= 0.03 && !_stop)//Ž~‚Ü‚Á‚Ä‚¢‚é”»’è‚Ímagnitude‚Å‚â‚Á‚½‚Ù‚¤‚ª‚¢‚¢‚ç‚µ‚¢
