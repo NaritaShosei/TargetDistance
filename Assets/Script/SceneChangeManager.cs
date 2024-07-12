@@ -7,6 +7,8 @@ public class SceneChangeManager : MonoBehaviour
 {
     [SerializeField] string _sceneName;
     [SerializeField] float _invokeTime;
+    [SerializeField] AudioSource _audio;
+    bool _push = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,12 @@ public class SceneChangeManager : MonoBehaviour
     }
     public void GetScene()
     {
-        Invoke("InvokeGet", _invokeTime);
+        if (_push)
+        {
+            _audio?.Play();
+            Invoke("InvokeGet", _invokeTime);
+            _push = false;
+        }
     }
     void InvokeGet()
     {
